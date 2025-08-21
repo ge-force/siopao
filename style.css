@@ -1,0 +1,74 @@
+/* General styles */
+body {
+    font-family: 'Comic Sans MS', cursive, sans-serif;
+    margin: 0;
+    padding: 0;
+    background: linear-gradient(135deg, #fff1eb, #ace0f9);
+    color: #333;
+    overflow-x: hidden;
+    cursor: url('images/paw-cursor.png'), auto;
+    transition: background 1s;
+}
+header { text-align: center; padding: 3rem 1rem; background-color: #ffe4e1; box-shadow: 0 4px 10px rgba(0,0,0,0.1); animation: bounceHeader 2s infinite alternate; }
+h1, h2 { font-family: 'Comic Sans MS', cursive, sans-serif; }
+h1 span, h2 span { color: #6a5acd; }
+section { padding: 2rem 1rem; text-align: center; }
+.profile p { font-size: 1.2rem; }
+
+/* Carousel */
+.carousel-container { position: relative; max-width: 90%; margin: 2rem auto; overflow: hidden; }
+.carousel { display: flex; transition: transform 0.5s ease-in-out; gap: 1rem; }
+.carousel img { min-width: 300px; border-radius: 15px; box-shadow: 0 6px 15px rgba(0,0,0,0.2); cursor: url('images/paw-cursor.png'), auto; transition: transform 0.3s; }
+.carousel img:hover { transform: scale(1.1) rotate(5deg); }
+.carousel-btn { position: absolute; top: 50%; transform: translateY(-50%); background-color: rgba(255,228,225,0.8); border: none; font-size: 2rem; padding: 0.5rem 1rem; cursor: pointer; border-radius: 50%; z-index: 10; }
+.left-btn { left: 10px; } .right-btn { right: 10px; }
+.carousel-btn:hover { background-color: rgba(255,182,193,0.9); }
+
+/* Video */
+video { width: 80%; max-width: 600px; border-radius: 15px; box-shadow: 0 6px 15px rgba(0,0,0,0.2); margin-top: 1rem; }
+
+/* Fun facts */
+.about p, .fun-facts ul { font-size: 1.2rem; max-width: 700px; margin: 0 auto; line-height: 1.6; }
+.fun-facts ul { list-style: none; padding: 0; }
+.fun-facts li { background-color: #fff0f5; margin: 0.5rem 0; padding: 0.8rem; border-radius: 10px; box-shadow: 0 4px 10px rgba(0,0,0,0.1); transition: transform 0.3s; }
+.fun-facts li:hover { transform: translateY(-5px) rotate(-2deg); }
+
+/* Footer */
+footer { text-align: center; padding: 1.5rem; background-color: #ffe4e1; margin-top: 2rem; }
+
+/* Animations */
+@keyframes bounceHeader { 0% { transform: translateY(0); } 100% { transform: translateY(-10px); } }
+
+/* Paw container */
+#paw-container { position: fixed; top:0; left:0; pointer-events: none; width:100%; height:100%; overflow:hidden; z-index:1000; }
+.paw { position: absolute; width: 40px; height: 40px; background: url('images/paw.png') no-repeat center center; background-size: contain; opacity:0.7; animation: float 5s linear infinite; }
+@keyframes float { 0% { transform: translateY(100vh) rotate(0deg); opacity:0.7; } 100% { transform: translateY(-50px) rotate(360deg); opacity:0; } }
+.paw-trail { position:absolute; width:25px; height:25px; background: url('images/paw.png') no-repeat center center; background-size: contain; pointer-events:none; opacity:0.8; transition: transform 0.5s, opacity 0.5s; }
+
+/* Lightbox */
+.lightbox { display:none; position:fixed; z-index:2000; padding-top:60px; left:0; top:0; width:100%; height:100%; overflow:auto; background-color:rgba(0,0,0,0.9); }
+.lightbox-content { margin:auto; display:block; width:80%; max-width:700px; border-radius:15px; }
+.close { position:absolute; top:20px; right:35px; color:#fff; font-size:40px; font-weight:bold; cursor:pointer; }
+.close:hover { color:#ccc; }
+.prev, .next { cursor:pointer; position:absolute; top:50%; width:auto; padding:16px; color:white; font-weight:bold; font-size:40px; transition:0.3s; user-select:none; }
+.prev { left:0; } .next { right:0; }
+.prev:hover, .next:hover { color:#bbb; }
+
+/* Scroll-to-top button */
+#scrollTopBtn { display:none; position:fixed; bottom:40px; right:40px; z-index:1500; font-size:2rem; background-color:#ffe4e1; color:#6a5acd; border:none; border-radius:50%; padding:0.5rem 0.8rem; cursor:pointer; box-shadow:0 4px 10px rgba(0,0,0,0.2); transition: transform 0.3s, background-color 0.3s; }
+#scrollTopBtn:hover { background-color:#ffb6c1; transform:scale(1.2); }
+
+/* Responsive */
+@media (max-width:768px) {
+    h1 { font-size:2rem; } h2 { font-size:1.5rem; }
+    section { padding:1rem; }
+    .carousel img { min-width:200px; }
+    .carousel-container { max-width:100%; }
+    video { width:100%; }
+}
+@media (max-width:480px) {
+    h1 { font-size:1.5rem; } h2 { font-size:1.2rem; }
+    .carousel img { min-width:150px; }
+    .carousel-btn { font-size:1.5rem; padding:0.3rem 0.5rem; }
+    .fun-facts li, .profile p { font-size:1rem; padding:0.5rem; }
+}
