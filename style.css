@@ -72,3 +72,17 @@ footer { text-align: center; padding: 1.5rem; background-color: #ffe4e1; margin-
     .carousel-btn { font-size:1.5rem; padding:0.3rem 0.5rem; }
     .fun-facts li, .profile p { font-size:1rem; padding:0.5rem; }
 }
+
+.video-slide {
+    min-width: 300px;
+    margin-right: 1rem;
+    border-radius: 15px;
+    overflow: hidden;
+    box-shadow: 0 6px 15px rgba(0,0,0,0.2);
+}
+
+.video-slide video {
+    width: 100%;
+    display: block;
+}
+
