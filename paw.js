@@ -9,18 +9,13 @@ function createPaw() {
 }
 setInterval(createPaw,500);
 
-// 🖼️ Image carousel scroll
-const imageCarousel = document.querySelector(".image-carousel");
-const imgLeftBtn = document.querySelector(".img-left-btn");
-const imgRightBtn = document.querySelector(".img-right-btn");
-
-imgRightBtn.addEventListener("click", () => {
-  imageCarousel.scrollBy({ left: 320, behavior: "smooth" });
-});
-
-imgLeftBtn.addEventListener("click", () => {
-  imageCarousel.scrollBy({ left: -320, behavior: "smooth" });
-});
+// Carousel
+const carousel = document.querySelector('.carousel');
+const leftBtn = document.querySelector('.left-btn');
+const rightBtn = document.querySelector('.right-btn');
+let scrollAmount=0; const scrollPerClick=320;
+rightBtn.addEventListener('click',()=>{ if(scrollAmount<(carousel.scrollWidth-carousel.clientWidth)){ scrollAmount+=scrollPerClick; carousel.scrollTo({left:scrollAmount,behavior:'smooth'}); } });
+leftBtn.addEventListener('click',()=>{ if(scrollAmount>0){ scrollAmount-=scrollPerClick; carousel.scrollTo({left:scrollAmount,behavior:'smooth'}); } });
 // Drag/swipe for carousel
 let startX,isDown=false;
 carousel.addEventListener('mousedown',e=>{ isDown=true; startX=e.pageX-carousel.offsetLeft; carousel.style.cursor='grabbing'; });

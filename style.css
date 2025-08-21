@@ -74,16 +74,15 @@ footer { text-align: center; padding: 1.5rem; background-color: #ffe4e1; margin-
 }
 
 .video-slide {
-  min-width: 300px;
-  margin-right: 1rem;
-  border-radius: 15px;
-  overflow: hidden;
-  box-shadow: 0 6px 15px rgba(0,0,0,0.2);
+    min-width: 300px;
+    margin-right: 1rem;
+    border-radius: 15px;
+    overflow: hidden;
+    box-shadow: 0 6px 15px rgba(0,0,0,0.2);
 }
 
 .video-slide video {
-  width: 100%;
-  display: block;
+    width: 100%;
+    display: block;
 }
-
 
