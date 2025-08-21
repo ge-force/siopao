@@ -57,3 +57,18 @@ document.addEventListener('mousemove',e=>{
     document.getElementById('paw-container').appendChild(trail);
     setTimeout(()=>{ trail.style.opacity='0'; trail.style.transform='scale(0.5) rotate(20deg)'; setTimeout(()=>trail.remove(),500); },50);
 });
+
+// 🎬 Video carousel scroll
+const videoCarousel = document.querySelector(".video-carousel");
+const videoLeftBtn = document.querySelector(".video-left-btn");
+const videoRightBtn = document.querySelector(".video-right-btn");
+
+if (videoCarousel && videoLeftBtn && videoRightBtn) {
+    videoRightBtn.addEventListener("click", () => {
+        videoCarousel.scrollBy({ left: 320, behavior: "smooth" });
+    });
+
+    videoLeftBtn.addEventListener("click", () => {
+        videoCarousel.scrollBy({ left: -320, behavior: "smooth" });
+    });
+}
