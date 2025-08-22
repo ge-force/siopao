@@ -137,14 +137,12 @@ document.querySelectorAll(".carousel-container").forEach(container => {
 </script>
 
 <script type="module">
-  // Import the functions you need from the SDKs you need
+  // Import Firebase SDKs
   import { initializeApp } from "https://www.gstatic.com/firebasejs/12.1.0/firebase-app.js";
-  import { getAnalytics } from "https://www.gstatic.com/firebasejs/12.1.0/firebase-analytics.js";
-  // TODO: Add SDKs for Firebase products that you want to use
-  // https://firebase.google.com/docs/web/setup#available-libraries
+  import { getFirestore, doc, getDoc, setDoc, updateDoc } 
+    from "https://www.gstatic.com/firebasejs/12.1.0/firebase-firestore.js";
 
-  // Your web app's Firebase configuration
-  // For Firebase JS SDK v7.20.0 and later, measurementId is optional
+  // Your Firebase config
   const firebaseConfig = {
     apiKey: "AIzaSyDWThqTGe4nmNaUynnYwH_NP7csOsgjSsg",
     authDomain: "siopao-site.firebaseapp.com",
@@ -157,46 +155,46 @@ document.querySelectorAll(".carousel-container").forEach(container => {
 
   // Initialize Firebase
   const app = initializeApp(firebaseConfig);
-  const analytics = getAnalytics(app);
+  const db = getFirestore(app);
 
   // Reference the likes document
-const likeDocRef = doc(db, "reactions", "siopao");
+  const likeDocRef = doc(db, "reactions", "siopao");
 
-// Initialize counts if missing
-async function initCounts() {
-  const snap = await getDoc(likeDocRef);
-  if (!snap.exists()) {
-    await setDoc(likeDocRef, { likes: 0, loves: 0 });
+  // Initialize counts if missing
+  async function initCounts() {
+    const snap = await getDoc(likeDocRef);
+    if (!snap.exists()) {
+      await setDoc(likeDocRef, { likes: 0, loves: 0 });
+    }
+    updateUI();
   }
-  updateUI();
-}
 
-// Update UI with current counts
-async function updateUI() {
-  const snap = await getDoc(likeDocRef);
-  if (snap.exists()) {
-    document.getElementById("likeCount").innerText = snap.data().likes;
-    document.getElementById("loveCount").innerText = snap.data().loves;
+  // Update UI with current counts
+  async function updateUI() {
+    const snap = await getDoc(likeDocRef);
+    if (snap.exists()) {
+      document.getElementById("likeCount").innerText = snap.data().likes;
+      document.getElementById("loveCount").innerText = snap.data().loves;
+    }
   }
-}
 
-// Button clicks
-document.getElementById("likeBtn").addEventListener("click", async () => {
-  const snap = await getDoc(likeDocRef);
-  await updateDoc(likeDocRef, { likes: snap.data().likes + 1 });
-  updateUI();
-});
+  // Button clicks
+  document.getElementById("likeBtn").addEventListener("click", async () => {
+    const snap = await getDoc(likeDocRef);
+    await updateDoc(likeDocRef, { likes: snap.data().likes + 1 });
+    updateUI();
+  });
 
-document.getElementById("loveBtn").addEventListener("click", async () => {
-  const snap = await getDoc(likeDocRef);
-  await updateDoc(likeDocRef, { loves: snap.data().loves + 1 });
-  updateUI();
-});
+  document.getElementById("loveBtn").addEventListener("click", async () => {
+    const snap = await getDoc(likeDocRef);
+    await updateDoc(likeDocRef, { loves: snap.data().loves + 1 });
+    updateUI();
+  });
 
-// Initialize
-initCounts();
-
+  // Initialize
+  initCounts();
 </script>
+
 
 </body>
 </html>
